@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#15803D">
+  <title>MemberCamp</title>
+  <meta name="description" content="MemberCamp — sell memberships online, get paid automatically, and see who's active. For gyms, studios, clubs and coworkings.">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <style>
+    :root { --green: #15803D; --green-dark: #14532D; --green-light: #DCFCE7; --ink: #0F172A; --muted: #475569; --line: #E2E8F0; --bg: #FFFFFF; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.6; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+    header { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; color: var(--ink); text-decoration: none; }
+    .lang { background: none; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font: inherit; font-size: 14px; color: var(--muted); cursor: pointer; }
+    .hero { text-align: center; padding: 56px 0 40px; }
+    .pill { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-dark); background: var(--green-light); border-radius: 999px; padding: 5px 14px; margin-bottom: 20px; }
+    h1 { margin: 0 auto 16px; max-width: 720px; font-size: clamp(32px, 6vw, 48px); line-height: 1.15; letter-spacing: -0.03em; }
+    .lead { margin: 0 auto 28px; max-width: 600px; color: var(--muted); font-size: 19px; }
+    .cta { display: inline-block; background: var(--green); color: #fff; font-weight: 600; text-decoration: none; border-radius: 10px; padding: 14px 28px; font-size: 17px; }
+    .cta:hover { background: var(--green-dark); }
+    .note { margin-top: 12px; font-size: 14px; color: var(--muted); }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; padding: 32px 0 56px; }
+    .card { border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+    .card h3 { margin: 0 0 6px; font-size: 17px; }
+    .card p { margin: 0; color: var(--muted); font-size: 15px; }
+    footer { text-align: center; padding: 24px 16px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+    footer a { color: var(--green); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="/"><img src="/assets/logo.svg" alt="" width="32" height="32"> MemberCamp</a>
+      <button class="lang" id="lang" type="button">Español</button>
+    </header>
+
+    <section class="hero">
+      <span class="pill" data-i18n="pill">Early access</span>
+      <h1 data-i18n="title">Memberships that bill themselves.</h1>
+      <p class="lead" data-i18n="lead">Sell memberships online, get paid automatically, and always know who's active. Built for gyms, studios, clubs and coworkings.</p>
+      <a class="cta" id="cta" href="#" data-i18n="cta">Join the early list</a>
+      <p class="note" data-i18n="note">Free while in early access. Set up in under 30 minutes.</p>
+    </section>
+
+    <section class="features">
+      <div class="card"><h3 data-i18n="f1t">Online sign-up page</h3><p data-i18n="f1d">Share one link. New members pick a plan and pay by card.</p></div>
+      <div class="card"><h3 data-i18n="f2t">Automatic billing</h3><p data-i18n="f2d">Monthly or yearly plans charge on their own — no more chasing payments.</p></div>
+      <div class="card"><h3 data-i18n="f3t">Late payment reminders</h3><p data-i18n="f3d">When a card fails, members get a reminder automatically.</p></div>
+      <div class="card"><h3 data-i18n="f4t">Know who's active</h3><p data-i18n="f4d">Members, revenue and who's behind on payments — at a glance.</p></div>
+    </section>
+  </div>
+
+  <footer>
+    A <a href="https://sourcequarter.com">Source Quarter</a> product · © Source Quarter LLC
+  </footer>
+
+  <script>
+    // Set to the waitlist form link (e.g. Tally) before launch.
+    const WAITLIST_URL = "#";
+    document.getElementById("cta").href = WAITLIST_URL;
+
+    const es = {
+      pill: "Acceso anticipado",
+      title: "Membresías que se cobran solas.",
+      lead: "Vendé membresías en línea, cobrá automáticamente y sabé siempre quién está activo. Hecho para gimnasios, estudios, clubes y coworkings.",
+      cta: "Unirme a la lista",
+      note: "Gratis durante el acceso anticipado. Listo en menos de 30 minutos.",
+      f1t: "Página de inscripción", f1d: "Compartí un solo enlace. Los nuevos miembros eligen un plan y pagan con tarjeta.",
+      f2t: "Cobro automático", f2d: "Los planes mensuales o anuales se cobran solos — sin perseguir pagos.",
+      f3t: "Recordatorios de pago", f3d: "Si una tarjeta falla, el miembro recibe un recordatorio automáticamente.",
+      f4t: "Sabé quién está activo", f4d: "Miembros, ingresos y quién está atrasado — de un vistazo."
+    };
+    const en = {};
+    document.querySelectorAll("[data-i18n]").forEach(el => { en[el.dataset.i18n] = el.textContent; });
+
+    const btn = document.getElementById("lang");
+    function setLang(lang) {
+      const dict = lang === "es" ? es : en;
+      document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = dict[el.dataset.i18n]; });
+      document.documentElement.lang = lang;
+      btn.textContent = lang === "es" ? "English" : "Español";
+      try { localStorage.setItem("lang", lang); } catch (e) {}
+    }
+    btn.addEventListener("click", () => setLang(document.documentElement.lang === "es" ? "en" : "es"));
+    let saved = null;
+    try { saved = localStorage.getItem("lang"); } catch (e) {}
+    if (saved === "es" || (!saved && navigator.language.startsWith("es"))) setLang("es");
+  </script>
+</body>
+</html>
